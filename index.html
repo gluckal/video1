@@ -18,7 +18,16 @@
 		}
 
 		button{
-			margin-bottom: 5px;
+			margin-bottom: 10px;
+		}
+		.play::before{
+			content: url("images/play.png");
+			width: 10px;
+			height: 10px; 
+		}
+		.pause::before{
+			content: url("images/pause1.png");
+
 		}
 
 		/*You can not change anything in the style tag other than to add images for the buttons. */
@@ -61,9 +70,9 @@
 	var vid = document.querySelector("#myVideo");
 
 	function playVid() { 
+		document.querySelector("#volume").innerHTML = document.querySelector("#volumeSlider").value + "%";
 		console.log("Play Video")
 		vid.play()
-
 
 		// Play the video and update the volume.
 	} 
@@ -74,19 +83,22 @@
 		vid.pause()
 
 
+
 	  	// Play the video.
 	} 
 
 	function slowSpeed() {
 		// Slow the vido speed by half and log the new rate to the console. 
-		vid.playbackRate = 0.5 
-		console.log("Speed is " + vid.playbackRate)
+		// vid.playbackRate = 0.5 
+		vid.playbackRate = vid.playbackRate * 0.5;
+		console.log("Speed is " + vid.playbackRate);
 	} 
 
 	function increaseSpeed() {
 		// Double the video speen and log the new rate to the console.
-		 vid.playbackRate = 2.0;
-		 console.log("Speed is " + vid.playbackRate)
+		//  vid.playbackRate = 2.0;
+		vid.playbackRate = vid.playbackRate * 2.0; 
+		 console.log("Speed is " + vid.playbackRate);
 	} 
 
 	function mute() { 
@@ -123,7 +135,8 @@
 
 		// Update the console log with the new volume as well.
 		console.log(display_volume);
-		document.querySelector("#volume").innerHTML = (display_volume * 100) + "%";
+		// document.querySelector("#volume").innerHTML = (display_volume * 100) + "%";
+		document.querySelector("#volume").innerHTML = document.querySelector("#volumeSlider").value + "%";
 	}
 	       
 
